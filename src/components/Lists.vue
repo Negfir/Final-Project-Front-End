@@ -1,6 +1,7 @@
 <template>
   <div class="Lists">
     <Top />
+    <pizza />
     <Down />
     <router-view></router-view>
   </div>
@@ -9,11 +10,11 @@
 <script>
 import Top from './Top.vue'
 import Down from './Down.vue'
-import SearchComp from './SearchComp.vue'
+import pizza from './pizza.vue'
 export default {
   name: 'app',
   components: {
-    Top,Down,SearchComp
+    Top,Down,pizza
   }
 }
 </script>
