@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Top />
+    <SearchComp  />
     <Down />
   </div>
 </template>
@@ -8,10 +9,11 @@
 <script>
 import Top from './components/Top.vue'
 import Down from './components/Down.vue'
+import SearchComp from './components/SearchComp.vue'
 export default {
   name: 'app',
   components: {
-    Top,Down
+    Top,Down,SearchComp
   }
 }
 </script>
