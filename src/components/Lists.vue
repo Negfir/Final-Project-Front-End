@@ -1,7 +1,8 @@
 <template>
-  <div class="Home">
+  <div class="Lists">
     <Top />
     <Down />
+    <router-view></router-view>
   </div>
 </template>
 
@@ -24,7 +25,7 @@ export default {
   color: rgb(127,127,127)
 }
 
-#app{
+.Lists{
   margin: 0;
   direction: rtl;
 

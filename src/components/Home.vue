@@ -3,7 +3,7 @@
     <Top />
     <SearchComp  />
     <Down />
-    <router-view/>
+   <router-view></router-view>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
   color: rgb(127,127,127)
 }
 
-#app{
+.Home{
   margin: 0;
   direction: rtl;
 
