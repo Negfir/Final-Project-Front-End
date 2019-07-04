@@ -1,19 +1,18 @@
 <template>
-  <div id="app">
-    <Home />
-    <router-view/>
+  <div class="Home">
+    <Top />
+    <Down />
   </div>
 </template>
 
 <script>
-import Top from './components/Top.vue'
-import Down from './components/Down.vue'
-import SearchComp from './components/SearchComp.vue'
-import Home from './components/Home.vue'
+import Top from './Top.vue'
+import Down from './Down.vue'
+import SearchComp from './SearchComp.vue'
 export default {
   name: 'app',
   components: {
-    Top,Down,SearchComp,Home
+    Top,Down,SearchComp
   }
 }
 </script>
