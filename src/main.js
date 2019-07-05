@@ -5,13 +5,17 @@ import Down from './components/Down.vue'
 import SearchComp from './components/SearchComp.vue'
 import Lists from './components/Lists.vue'
 import Home from './components/Home.vue'
+import Rest from './components/Rest.vue'
+import DownTown from './components/DownTown.vue'
 
 
 // snip
 
 const routes = {
   '/': Home,
-  '/lists': Lists
+  '/lists': Lists,
+  '/rest': Rest,
+  '/DownTown': DownTown
 }
 
 

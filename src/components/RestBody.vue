@@ -157,7 +157,7 @@ xmlhttp.onreadystatechange = function() {
 
 	var box1 =document.createElement('div');
 	var a1 =document.createElement('a');
-	a1.setAttribute("href", "/DownTown");
+	a1.setAttribute("href", "/res?name="+txt1);
 	box1.setAttribute("class", "box");
 	box1.setAttribute("id", "pic"+i);
 	box1.innerHTML=txt1;
@@ -170,7 +170,7 @@ xmlhttp.onreadystatechange = function() {
 	var txt2= myObj[i+1].name;
 	var box2 =document.createElement('div');
 	var a2 =document.createElement('a');
-	a2.setAttribute("href", "/rest?name="+txt2);
+	a2.setAttribute("href", "/res?name="+txt2);
 	box2.setAttribute("class", "box");
 	box2.setAttribute("id", "pic"+(i+1));
 	box2.innerHTML=txt2;
@@ -185,7 +185,7 @@ xmlhttp.onreadystatechange = function() {
 	var txt3= myObj[i+2].name;
 	var box3 =document.createElement('div');
 	var a3 =document.createElement('a');
-	a3.setAttribute("href", "/rest?name="+txt3);
+	a3.setAttribute("href", "/res?name="+txt3);
 	box3.setAttribute("class", "box");
 	box3.setAttribute("id", "pic"+i);
 	box3.innerHTML=txt3;
