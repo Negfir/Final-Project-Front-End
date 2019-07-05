@@ -2,7 +2,7 @@
   
     <div class="resList">
 		<div class="MainPage">
-	    <h class="hRes"> 170 رستوران امکان سرویس دهی به </h>
+	    <h class="hRes"> <span id="numRes">170</span> رستوران امکان سرویس دهی به <span id="nameRes">170</span> را دارند. </h>
 	    <hr/>
 
 		<input type="text" id="myInput"  placeholder="جست و جوی رستوران در این محدوده" title="Type in a name">
@@ -16,7 +16,7 @@
 				<h2>My Customers</h2>
 
 				<input type="text" id="myInput2" v-on:keyup="greet" placeholder="جستوجوی دسته بندی غذاها" title="Type in a name">
-
+<form  id="myForm"action="">
 				<table id="myTable">
 				  <tr class="header">
 			
@@ -25,41 +25,40 @@
 				    <td><p> <label class="container">Two
 							  <input type="checkbox">
 							  <span class="checkmark"></span>
+							  
 							</label> </p></td>
 				  </tr>
 				  <tr>
 				    <td><p> <label class="container">Three
-							  <input type="checkbox">
+				    	
+							  <input id="check" type="checkbox" name="vehicle1" value="Bike" v-on:change="greet2" >
 							  <span class="checkmark"></span>
+							   
 							</label> </p></td>
 				  </tr>
 				  <tr>
 				    <td><p> <label class="container">Four
-							  <input type="checkbox">
+							  <input id="check" type="checkbox" name="vehicle2" value="Bike2" v-on:change="greet2" >
 							  <span class="checkmark"></span>
 							</label> </p></td>
 				  </tr>
 
 				</table>
+				<button class="reySearch" type="submit"><i class="fa fa-search"></i></button>
+							</form>
 
 			</div>
 			<div id= "rests">
 			<div id="containers">		
 				<div class="box" id="res1"> 
+					<router-link class="nav-link" to="/contact">contact</router-link>
 				</div>
-				<div class="box">
+				<div class="box"  id="res1">
 				</div>
-				<div class="box">
-				</div>
-			</div>
-			<div id="containers">		
-				<div class="box" id="res1"> 
-				</div>
-				<div class="box">
-				</div>
-				<div class="box">
+				<div class="box"  id="res1">
 				</div>
 			</div>
+			
 			</div>
 
 
@@ -95,36 +94,36 @@
       }
     }       
   }
+}, greet2: function myFunction2(obj) { 
+	console.log("sffasf");
+	var input = document.getElementById("check");
+	var form = document.getElementById("myForm");
+	console.log(obj.target.checked);
+	if(obj.target.checked){
+		obj.target.checked=true;
+		console.log("ooooooh");
+		form.submit();
+	}
+
 }
+
+    },
+
+        head: {
+        script: [
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' },
+        ]
     }
   }
 
 
+import JQuery from './jquery'
+let $ = JQuery
 
-
-
-
-
-
-
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
+$(":checkbox").click(function() {
+	console.log("sada");
+      $("#myForm").submit();      
+});
 
 
 function loadJSON()
@@ -134,7 +133,51 @@ xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myObj = JSON.parse(this.responseText);
 	document.getElementById("res1").innerHTML=myObj[0].name;
+	document.getElementById("numRes").innerHTML=myObj.length;
+	document.getElementById("nameRes").innerHTML=myObj[0].address.city +"، "+ myObj[0].address.area;
 	console.log(myObj);
+
+  for (var i = 0; i< myObj.length; i=i+3) {
+  	console.log(i);
+    var txt1= myObj[i].name;
+    
+    
+	
+	var rest=document.getElementById("rests");
+	var cont =document.createElement('div');
+	cont.setAttribute("id", "containers");
+
+	var box1 =document.createElement('div');
+	box1.setAttribute("class", "box");
+	box1.setAttribute("id", "pic"+i);
+	box1.innerHTML=txt1;
+	console.log("url('"+myObj[i].logo+"')");
+	
+	cont.appendChild(box1);
+
+	if((i+1)<myObj.length){
+	var txt2= myObj[i+1].name;
+	var box2 =document.createElement('div');
+	box2.setAttribute("class", "box");
+	box2.setAttribute("id", "pic"+(i+1));
+	box2.innerHTML=txt2;
+	console.log("url('"+myObj[i+1].logo+"')");
+	var url="'"+myObj[i+1].logo+"'"
+
+	cont.appendChild(box2);}
+
+	if((i+2)<myObj.length){
+	var txt3= myObj[i+2].name;
+	var box3 =document.createElement('div');
+	box3.setAttribute("class", "box");
+	box3.setAttribute("id", "pic"+i);
+	box3.innerHTML=txt3;
+	box3.style.background="url('"+myObj[i+2].logo+"');";
+	cont.appendChild(box3);}
+
+	rest.appendChild(cont);
+  }
+
 
   }
 };
@@ -200,6 +243,17 @@ loadJSON();
 	
 }
 
+#numRes{
+		font-size: 1.6rem;
+	line-height: 3rem;
+	color: black;
+}
+#nameRes{
+	font-weight: bold;
+		font-size: 1.6rem;
+	line-height: 3rem;
+	color: black;
+}
 
 .hRes{
 
@@ -260,8 +314,6 @@ input[type=text] {
 
 	margin-left: auto;
     margin-right: auto;
-	max-width: 100%;
-    max-height: 100%;
 	border: 0;
 	margin: 0 ;
 	padding: 0 ;
@@ -270,6 +322,7 @@ input[type=text] {
 	background-color: rgb(250, 250, 250);
 	float:left;
 clear:none;  
+display:inline-block;
 
 }
 
@@ -308,10 +361,10 @@ clear:none;
 
 .box{
 	
-	background: url(../Images/box1.png);
+	background: url(../Images/Ario.png);
 	background-position:right;
 	background-repeat: no-repeat;
-	background-size: 25% 70%;
+	background-size: 100% 100%;
 	background-color: rgb(255, 255, 255);
 	right: 0px;
 	margin:0px;
@@ -322,6 +375,8 @@ clear:none;
     vertical-align: top;
     display: inline-block;
     padding:0;
+
+    margin-right:10px;
     *display: inline;
     zoom: 1	
 	
@@ -337,10 +392,27 @@ clear:none;
     width: 320px;
     height: 150px;
     vertical-align: top;
+
     display: inline-block;
     *display: inline;
     zoom: 1	
 }
+
+#pic0{
+	background: url(../Images/DownTown.png);
+	background-position:right;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: rgb(255, 255, 255);
+}
+#pic1{
+	background: url(../Images/Ario.png);
+	background-position:right;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: rgb(255, 255, 255);
+}
+
 .box3{
 	background: url(../Images/box3.png);
 	height: 0.01px;
@@ -430,10 +502,7 @@ clear:none;
   margin-bottom: 12px;
   cursor: pointer;
   font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+
 }
 
 /* Hide the browser's default checkbox */

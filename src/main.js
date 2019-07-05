@@ -6,12 +6,15 @@ import SearchComp from './components/SearchComp.vue'
 import Lists from './components/Lists.vue'
 import Home from './components/Home.vue'
 
+
 // snip
 
 const routes = {
   '/': Home,
   '/lists': Lists
 }
+
+
 
 new Vue({
   el: '#app',
