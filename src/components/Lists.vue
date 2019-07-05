@@ -1,7 +1,7 @@
 <template>
   <div class="Lists">
     <Top />
-    <pizza />
+    <resList />
     <Down />
     <router-view></router-view>
   </div>
@@ -10,11 +10,11 @@
 <script>
 import Top from './Top.vue'
 import Down from './Down.vue'
-import pizza from './pizza.vue'
+import resList from './resList.vue'
 export default {
   name: 'app',
   components: {
-    Top,Down,pizza
+    Top,Down,resList
   }
 }
 </script>

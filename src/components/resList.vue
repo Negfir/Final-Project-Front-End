@@ -1,0 +1,495 @@
+<template>
+  
+    <div class="resList">
+		<div class="MainPage">
+	    <h class="hRes"> 170 رستوران امکان سرویس دهی به </h>
+	    <hr/>
+
+		<input type="text" id="myInput"  placeholder="جست و جوی رستوران در این محدوده" title="Type in a name">
+
+		</div>
+
+		<div class="recom">
+
+			<div class="filterContainer">
+
+				<h2>My Customers</h2>
+
+				<input type="text" id="myInput2" v-on:keyup="greet" placeholder="جستوجوی دسته بندی غذاها" title="Type in a name">
+
+				<table id="myTable">
+				  <tr class="header">
+			
+				  </tr>
+				  <tr>
+				    <td><p> <label class="container">Two
+							  <input type="checkbox">
+							  <span class="checkmark"></span>
+							</label> </p></td>
+				  </tr>
+				  <tr>
+				    <td><p> <label class="container">Three
+							  <input type="checkbox">
+							  <span class="checkmark"></span>
+							</label> </p></td>
+				  </tr>
+				  <tr>
+				    <td><p> <label class="container">Four
+							  <input type="checkbox">
+							  <span class="checkmark"></span>
+							</label> </p></td>
+				  </tr>
+
+				</table>
+
+			</div>
+			<div id= "rests">
+			<div id="containers">		
+				<div class="box" id="res1"> 
+				</div>
+				<div class="box">
+				</div>
+				<div class="box">
+				</div>
+			</div>
+			<div id="containers">		
+				<div class="box" id="res1"> 
+				</div>
+				<div class="box">
+				</div>
+				<div class="box">
+				</div>
+			</div>
+			</div>
+
+
+
+		</div>
+
+
+    </div>
+
+    	
+
+</template>
+
+
+<script>
+  export default {
+    methods: {
+         greet: function myFunction() {
+    
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput2");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+    }
+  }
+
+
+
+
+
+
+
+
+
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+
+function loadJSON()
+{
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myObj = JSON.parse(this.responseText);
+	document.getElementById("res1").innerHTML=myObj[0].name;
+	console.log(myObj);
+
+  }
+};
+var url = "http://localhost:5000/api/restaurant"+window.location.search;
+console.log(url);
+xmlhttp.open("GET", url, true);
+
+xmlhttp.send();	
+}
+
+//alert(url);
+loadJSON();
+
+</script>
+
+<style lang="scss">
+#rests{
+	position:absolute;
+	top:400px;
+}
+
+#myInput {
+	background-color:rgb(250,250,250);
+	position:relative;
+	top:300px;
+	right:-100px;
+  background-image: url('../Images/searchicon.png');
+  background-position:right;
+  background-position: 450px 10px;
+  background-size: 5% 50%;
+  background-repeat: no-repeat;
+  border-radius:8px;
+  width: 50%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  
+  padding-right: 50px;
+  width:400px;
+}
+
+.MainPage{
+	
+	max-width: 100%;
+    max-height: 100%;
+	float:left;
+	border: 0;
+	margin: 0 ;
+	padding: 0 ;
+	height: 380px;
+	width:100%;
+
+	background-image: url(../Images/topPizza.jpg);
+	background-position: top;
+	background-repeat: no-repeat; 
+	background-size:  100%;
+    position: relative;
+	object-fit: fill;
+	clear: both	;
+	
+	
+	
+}
+
+
+.hRes{
+
+	margin-top: 6rem;
+	text-align: center;
+	font-size: 1.6rem;
+	line-height: 3rem;
+	color: black;
+	
+	position: relative;
+	top:190px;
+	right:200px;
+}
+
+hr {
+	position:relative;
+	z-index: 10;
+	border: 0;
+	height: 0.9px;
+	width:100%;
+	margin-top: 200px;
+	max-width: 94000px;
+	padding: 0;
+	clear: both;
+	background:#DCDCDC;
+	float:right
+}
+
+
+.search-container {
+  float: right;
+}
+
+input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+
+
+.recom{
+
+	margin-left: auto;
+    margin-right: auto;
+	max-width: 100%;
+    max-height: 100%;
+	border: 0;
+	margin: 0 ;
+	padding: 0 ;
+	height: 800px;
+	width:100%;
+	background-color: rgb(250, 250, 250);
+	float:left;
+clear:none;  
+
+}
+
+.filterContainer {
+	background-color:rgb(255,255,255);
+	margin-right: 100px;
+	position:absolute;
+	left: 100;
+	right: 10px;
+	margin-top: 100px;
+		
+    
+   margin: 100px;
+    width: 200px;
+    display:inline-block;
+}
+
+#containers {
+	
+	margin-top: 10px;
+	position:relative;
+	left: 0;
+	right: 380px;
+	margin-top: 100px;
+
+		
+    height: 125px;
+    
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+    
+    /* just for demo */
+    width: 1000px;
+}
+
+.box{
+	
+	background: url(../Images/box1.png);
+	background-position:right;
+	background-repeat: no-repeat;
+	background-size: 25% 70%;
+	background-color: rgb(255, 255, 255);
+	right: 0px;
+	margin:0px;
+	
+	box-shadow: 3px 3px 10px 1px  #ccc;
+    width: 310px;
+    height: 180px;
+    vertical-align: top;
+    display: inline-block;
+    padding:0;
+    *display: inline;
+    zoom: 1	
+	
+}
+.box2{
+	background: url(../Images/box2.png);
+	height: 0.01px;
+	background-position:right;
+	background-repeat: no-repeat;
+	background-size: 25% 70%;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 3px 3px 10px 1px #ccc;
+    width: 320px;
+    height: 150px;
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    zoom: 1	
+}
+.box3{
+	background: url(../Images/box3.png);
+	height: 0.01px;
+	background-position:right;
+	background-repeat: no-repeat;
+	background-size: 25% 70%;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 3px 3px 10px 1px #ccc;
+    width: 400px;
+    height: 230px;
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    zoom: 1	
+	
+}
+
+#containers:after {
+    content: '';
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+
+.boxP{
+	
+	margin-top: -2.5rem;
+	font-size: 1.1rem;
+	line-height: 2rem;
+	max-width: 100%;
+	text-align: right;	
+	
+}
+
+.boxContent{
+	margin-top: 2.5rem;
+	margin-right: 6rem;
+	font-size: 0.9rem;
+	line-height: 2rem;
+	max-width: 100%;
+	text-align: right;	
+}
+
+#myInput2 {
+	background-color:rgb(250,250,250);
+	position:relative;
+	top:10px;
+	right:0px;
+  border-radius:8px;
+  width:300px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  padding-right: 5px;
+  width:200px;
+  z-index:10;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+	 direction: rtl;
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+.container {
+	z-index:10;
+
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+</style>
+
