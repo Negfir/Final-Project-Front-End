@@ -51,7 +51,8 @@
 			<div id= "rests">
 			<div id="containers">		
 				<div class="box" id="res1"> 
-					<router-link class="nav-link" to="/contact">contact</router-link>
+					<<a v-on='{name: "home"}, onClick'>Home</a>
+					<a v-on='{name: "home", click: onClick}'>Home</a>
 				</div>
 				<div class="box"  id="res1">
 				</div>
@@ -98,11 +99,15 @@
 	console.log("sffasf");
 	var input = document.getElementById("check");
 	var form = document.getElementById("myForm");
-	console.log(obj.target.checked);
+	console.log(obj.target.value)
 	if(obj.target.checked){
 		obj.target.checked=true;
 		console.log("ooooooh");
-		form.submit();
+		var queryString="category="
+		var pageUrl = window.location.search+ '&' + queryString+obj.target.value;
+		window.history.pushState('', '', pageUrl);
+		//window.history.pushState(stateObj, "page 2", "bar.html");
+		//form.submit();
 	}
 
 }
