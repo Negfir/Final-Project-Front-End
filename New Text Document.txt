@@ -2,10 +2,10 @@
   
     <div class="resList">
 		<div class="MainPage">
-	    <h class="hRes"> <span id="numRes">170</span> رستوران امکان سرویس دهی به <span id="nameRes">170</span> را دارند. </h>
+	    <h class="hRes"> <span id="numRes">170</span> ??????? ????? ????? ??? ?? <span id="nameRes">170</span> ?? ?????. </h>
 	    <hr/>
 
-		<input type="text" id="myInput"  placeholder="جست و جوی رستوران در این محدوده" title="Type in a name">
+		<input type="text" id="myInput"  placeholder="??? ? ??? ??????? ?? ??? ??????" title="Type in a name">
 
 		</div>
 
@@ -13,39 +13,32 @@
 
 			<div class="filterContainer">
 
-				<p>فیلتر بر اساس انواع غذا</p>
+				<p>????? ?? ???? ????? ???</p>
 
-				<input type="text" id="myInput2" v-on:keyup="greet" placeholder="جستوجوی دسته بندی غذاها" title="Type in a name">
+				<input type="text" id="myInput2" v-on:keyup="greet" placeholder="??????? ???? ???? ?????" title="Type in a name">
 <form  id="myForm"action="">
 				<table id="myTable">
 				  <tr class="header">
 			
 				  </tr>
 				  <tr>
-				    <td><p> <label class="container">فرنگی
-							  <input id="check" type="checkbox" name="vehicle1" value="فرنگی" v-on:change="greet2">
-							  <span class="checkmark"></span>
-							  
-							</label> </p></td>
-				  </tr>
-				  				  <tr>
-				    <td><p> <label class="container">چینی
-							  <input id="check" type="checkbox" name="vehicle1" value="چینی" v-on:change="greet2">
+				    <td><p> <label class="container">Two
+							  <input type="checkbox">
 							  <span class="checkmark"></span>
 							  
 							</label> </p></td>
 				  </tr>
 				  <tr>
-				    <td><p> <label for="check" class="container"> فست فود
+				    <td><p> <label class="container">Three
 				    	
-							  <input id="check" type="checkbox" name="vehicle1" value="فست فود" v-on:change="greet2" >
+							  <input id="check" type="checkbox" name="vehicle1" value="Bike" v-on:change="greet2" >
 							  <span class="checkmark"></span>
 							   
 							</label> </p></td>
 				  </tr>
 				  <tr>
-				    <td> <label class="container"> دریایی
-							  <input id="check" type="checkbox" name="vehicle2" value="دریایی" v-on:change="greet2" >
+				    <td> <label class="container"> Four
+							  <input id="check" type="checkbox" name="vehicle2" value="Bike2" v-on:change="greet2" >
 							  <span class="checkmark"></span>
 							</label> </td>
 				  </tr>
@@ -103,13 +96,12 @@
 	if(obj.target.checked){
 		obj.target.checked=true;
 		console.log("ooooooh");
-		var queryString="categories.name="
-		console.log(window.location.search);
+		var queryString="category="
 		var pageUrl = window.location.search+ '&' + queryString+obj.target.value;
 		window.history.pushState('', '', pageUrl);
 		//window.history.pushState(stateObj, "page 2", "bar.html");
 		//form.submit();
-		location.reload(); 
+		//location.reload(); 
 	}
 
 }
@@ -142,7 +134,7 @@ xmlhttp.onreadystatechange = function() {
     var myObj = JSON.parse(this.responseText);
 	document.getElementById("res1").innerHTML=myObj[0].name;
 	document.getElementById("numRes").innerHTML=myObj.length;
-	document.getElementById("nameRes").innerHTML=myObj[0].address.city +"، "+ myObj[0].address.area;
+	document.getElementById("nameRes").innerHTML=myObj[0].address.city +"? "+ myObj[0].address.area;
 	console.log(myObj);
 
   for (var i = 0; i< myObj.length; i=i+3) {
@@ -160,7 +152,7 @@ xmlhttp.onreadystatechange = function() {
 	a1.setAttribute("href", "/DownTown");
 	box1.setAttribute("class", "box");
 	box1.setAttribute("id", "pic"+i);
-	//box1.innerHTML=txt1;
+	box1.innerHTML=txt1;
 	a1.appendChild(box1);
 	console.log("url('"+myObj[i].logo+"')");
 	
@@ -173,7 +165,7 @@ xmlhttp.onreadystatechange = function() {
 	a2.setAttribute("href", "/rest?name="+txt2);
 	box2.setAttribute("class", "box");
 	box2.setAttribute("id", "pic"+(i+1));
-	//box2.innerHTML=txt2;
+	box2.innerHTML=txt2;
 	a2.appendChild(box2);
 	console.log("url('"+myObj[i+1].logo+"')");
 	var url="'"+myObj[i+1].logo+"'"
@@ -188,7 +180,7 @@ xmlhttp.onreadystatechange = function() {
 	a3.setAttribute("href", "/rest?name="+txt3);
 	box3.setAttribute("class", "box");
 	box3.setAttribute("id", "pic"+(i+2));
-	//box3.innerHTML=txt3;
+	box3.innerHTML=txt3;
 	a3.appendChild(box3);
 	box3.style.background="url('"+myObj[i+2].logo+"');";
 	cont.appendChild(a3);}
@@ -400,7 +392,7 @@ input[type=text] {
 	border: 0;
 	margin: 0 ;
 	padding: 0 ;
-	height: 1200px;
+	height: 800px;
 	width:100%;
 	background-color: rgb(250, 250, 250);
 	float:left;
@@ -444,7 +436,7 @@ display:inline-block;
 
 .box{
 	
-	
+	background: url(../Images/Ario.png);
 	background-position:right;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
