@@ -18,8 +18,8 @@
 				<div class="s1">
 				<label class="para">&nbsp; منطقه خود را وارد کنید &nbsp; </label>
 					<form  action="/lists">
-					<input class="m5" type="text" id="fname2" name="City" value="تهران" >
-					  <input class="m4" type="text" id="fname" name="Address" placeholder="مثلا نیاوران" >
+					<input class="m5" type="text" id="fname2" name="address.city" value="تهران" >
+					  <input class="m4" type="text" id="fname" name="address.area" placeholder="مثلا نیاوران" >
 					   <button class="reySearch" type="submit"><i class="fa fa-search"></i></button>
 					    
 					</form>

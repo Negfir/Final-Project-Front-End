@@ -13,52 +13,40 @@
 
 			<div class="filterContainer">
 
-				<h2>My Customers</h2>
+				<p>&nbsp;&nbsp;&nbsp;فیلتر بر اساس انواع غذا</p>
 
 				<input type="text" id="myInput2" v-on:keyup="greet" placeholder="جستوجوی دسته بندی غذاها" title="Type in a name">
 <form  id="myForm"action="">
 				<table id="myTable">
-				  <tr class="header">
-			
-				  </tr>
 				  <tr>
-				    <td><p> <label class="container">Two
+				    <td> <label class="container">Two
 							  <input type="checkbox">
 							  <span class="checkmark"></span>
 							  
-							</label> </p></td>
+							</label> </td>
 				  </tr>
 				  <tr>
-				    <td><p> <label class="container">Three
+				    <td> <label class="container">Three
 				    	
 							  <input id="check" type="checkbox" name="vehicle1" value="Bike" v-on:change="greet2" >
 							  <span class="checkmark"></span>
 							   
-							</label> </p></td>
+							</label> </td>
 				  </tr>
 				  <tr>
-				    <td><p> <label class="container">Four
+				    <td> <label class="container"> Four
 							  <input id="check" type="checkbox" name="vehicle2" value="Bike2" v-on:change="greet2" >
 							  <span class="checkmark"></span>
-							</label> </p></td>
+							</label> </td>
 				  </tr>
 
 				</table>
-				<button class="reySearch" type="submit"><i class="fa fa-search"></i></button>
 							</form>
 
 			</div>
 			<div id= "rests">
-			<div id="containers">
-			<a href="Rest?name=">
-				<div class="box" id="res1" v-on:change="greet2"> 
-
-				</div>
-			</a>
-
-				<div class="box"  id="res1" >
-				</div>
-				<div class="box"  id="res1">
+			<div >
+				<div   id="res1">
 				</div>
 			</div>
 			
@@ -110,6 +98,7 @@
 		window.history.pushState('', '', pageUrl);
 		//window.history.pushState(stateObj, "page 2", "bar.html");
 		//form.submit();
+		location.reload(); 
 	}
 
 }
@@ -144,6 +133,8 @@ xmlhttp.onreadystatechange = function() {
 	document.getElementById("numRes").innerHTML=myObj.length;
 	document.getElementById("nameRes").innerHTML=myObj[0].address.city +"، "+ myObj[0].address.area;
 	console.log(myObj);
+
+
 
   for (var i = 0; i< myObj.length; i=i+3) {
   	console.log(i);
@@ -187,7 +178,7 @@ xmlhttp.onreadystatechange = function() {
 	var a3 =document.createElement('a');
 	a3.setAttribute("href", "/rest?name="+txt3);
 	box3.setAttribute("class", "box");
-	box3.setAttribute("id", "pic"+i);
+	box3.setAttribute("id", "pic"+(i+2));
 	box3.innerHTML=txt3;
 	a3.appendChild(box3);
 	box3.style.background="url('"+myObj[i+2].logo+"');";
@@ -351,8 +342,7 @@ display:inline-block;
 	left: 100;
 	right: 10px;
 	margin-top: 100px;
-		
-    
+	border: 1px solid #ddd;
    margin: 100px;
     width: 200px;
     display:inline-block;
@@ -430,6 +420,13 @@ display:inline-block;
 	background-size: 100% 100%;
 	background-color: rgb(255, 255, 255);
 }
+#pic2{
+	background: url(../Images/DayNight.png);
+	background-position:right;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: rgb(255, 255, 255);
+}
 
 .box3{
 	background: url(../Images/box3.png);
@@ -478,15 +475,16 @@ display:inline-block;
 #myInput2 {
 	background-color:rgb(250,250,250);
 	position:relative;
-	top:10px;
-	right:0px;
+	top:1px;
+	right:3px;
   border-radius:8px;
   width:300px;
   font-size: 16px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
   padding-right: 5px;
-  width:200px;
+  width:180px;
+  height:40px;
   z-index:10;
 }
 
